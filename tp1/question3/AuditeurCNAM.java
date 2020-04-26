@@ -46,12 +46,22 @@ public class AuditeurCNAM {
      */
     public String login() {
         String login = "";
-        login = this.nom.substring(0,6).toLowerCase() + '_' + this.prenom.substring(0,1).toLowerCase();
-        login = login.replaceAll("é", "e");
-        login = login.replaceAll("è", "e");
-        login = login.replaceAll("à", "a");
-        login = login.replaceAll("-", "_");
-        return login;// à compléter
+        if(this.nom != null && this.prenom != null ){
+            if(this.nom.length() >=6){
+                login = this.nom.substring(0,6).toLowerCase() + '_' + this.prenom.substring(0,1).toLowerCase();
+            }else{
+                login = this.nom.toLowerCase() + '_' + this.prenom.substring(0,1).toLowerCase();
+            }
+            login = login.replaceAll("é", "e");
+            login = login.replaceAll("è", "e");
+            login = login.replaceAll("à", "a");
+            login = login.replaceAll("-", "_");
+            return login;// à compléter
+        }else{
+            return "nom et prenom cant be null";
+        }
+        
+        
     }
 
     /**
